@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="qrcode.min.js"></script>
     <style>
         body {
             display: flex;
@@ -31,8 +33,17 @@
 
 <body>
     <h1>Welcome to Flutter Supabase Auth App!</h1>
-    <h2>This link should have been opened on the device where the password reset was requested.</h2>
-    <h2>This link is not valid anymore. If you want to change your password, you must create a new request.</h2>
+    <div id="qrcode" style="width:150px; height:150px; margin-top:15px;"></div>
+    <h2>Scan this link with the app to set a new password.</h2>
+
+    <script type="text/javascript">
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 150,
+            height: 150
+        });
+
+        qrcode.makeCode(window.location.href);
+    </script>
 </body>
 
 </html>
